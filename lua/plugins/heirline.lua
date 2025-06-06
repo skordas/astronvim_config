@@ -17,7 +17,19 @@ return {
       hl = { fg = "fg", bg = "bg" },
       status.component.mode(),
       status.component.git_branch(),
-      status.component.file_info(),
+      status.component.file_info(
+      {
+          -- enable the file_icon and disable the highlighting based on filetype
+          filename = { fallback = "Empty" },
+          -- disable some of the info
+          filetype = false,
+          file_read_only = false,
+          -- add padding
+          padding = { right = 1 },
+          -- define the section separator
+          surround = { separator = "left", condition = false },
+        }
+      ),
       status.component.git_diff(),
       status.component.diagnostics(),
       status.component.fill(),
